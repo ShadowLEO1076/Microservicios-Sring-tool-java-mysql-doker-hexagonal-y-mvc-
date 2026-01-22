@@ -1,0 +1,23 @@
+server:
+  port: 8083  # Corregido para dejar libre el 8082 a Pedidos
+
+spring:
+  application:
+    name: products-service # ¡Nombre clave para el Gateway!
+  datasource:
+    url: jdbc:mysql://localhost:3306/bd_productos?createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: root
+    password: "" 
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+# ESTO FALTABA
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true

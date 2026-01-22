@@ -1,0 +1,23 @@
+server:
+  port: 8082  # Corregido según tu documento Word (antes tenías 8083)
+
+spring:
+  application:
+    name: orders-service  # ¡Nombre clave para el Gateway!
+  datasource:
+    url: jdbc:mysql://localhost:3306/bd_pedidos?createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: root
+    password: "" 
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+# ESTO FALTABA: La conexión con la Onee-san Eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
